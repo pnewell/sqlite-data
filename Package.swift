@@ -15,10 +15,10 @@ let package = Package(
       name: "SQLiteData",
       targets: ["SQLiteData"]
     ),
-    .library(
-      name: "SQLiteDataTestSupport",
-      targets: ["SQLiteDataTestSupport"]
-    ),
+//    .library(
+//      name: "SQLiteDataTestSupport",
+//      targets: ["SQLiteDataTestSupport"]
+//    ),
   ],
   traits: [
     .trait(
@@ -31,16 +31,16 @@ let package = Package(
     .package(url: "https://github.com/pnewell/GRDB.swift", branch: "skip"),
     .package(url: "https://github.com/pointfreeco/swift-concurrency-extras", from: "1.0.0"),
     .package(url: "https://github.com/pointfreeco/swift-custom-dump", from: "1.3.3"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.9.0"),
+    .package(url: "https://github.com/pnewell/swift-dependencies", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-perception", from: "2.0.0"),
-    .package(url: "https://github.com/pointfreeco/swift-sharing", from: "2.3.0"),
+    .package(url: "https://github.com/pnewell/swift-sharing", branch: "main"),
     .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.18.4"),
     .package(
-      url: "https://github.com/pointfreeco/swift-structured-queries",
-      from: "0.27.0",
-      traits: [
-        .trait(name: "StructuredQueriesTagged", condition: .when(traits: ["SQLiteDataTagged"]))
-      ]
+      url: "https://github.com/pnewell/swift-structured-queries",
+      branch: "skip",
+//      traits: [
+//        .trait(name: "StructuredQueriesTagged", condition: .when(traits: ["SQLiteDataTagged"]))
+//      ]
     ),
     .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.10.0"),
     .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.5.0"),
@@ -56,6 +56,7 @@ let package = Package(
         .product(name: "OrderedCollections", package: "swift-collections"),
         .product(name: "Perception", package: "swift-perception"),
         .product(name: "Sharing", package: "swift-sharing"),
+        .product(name: "CustomDump", package: "swift-custom-dump"),
         .product(name: "StructuredQueriesSQLite", package: "swift-structured-queries"),
         .product(
           name: "Tagged",
@@ -64,28 +65,28 @@ let package = Package(
         ),
       ]
     ),
-    .target(
-      name: "SQLiteDataTestSupport",
-      dependencies: [
-        "SQLiteData",
-        .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras"),
-        .product(name: "CustomDump", package: "swift-custom-dump"),
-        .product(name: "Dependencies", package: "swift-dependencies"),
-        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
-        .product(name: "StructuredQueriesTestSupport", package: "swift-structured-queries"),
-      ]
-    ),
-    .testTarget(
-      name: "SQLiteDataTests",
-      dependencies: [
-        "SQLiteData",
-        "SQLiteDataTestSupport",
-        .product(name: "DependenciesTestSupport", package: "swift-dependencies"),
-        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
-        .product(name: "SnapshotTestingCustomDump", package: "swift-snapshot-testing"),
-        .product(name: "StructuredQueries", package: "swift-structured-queries"),
-      ]
-    ),
+//    .target(
+//      name: "SQLiteDataTestSupport",
+//      dependencies: [
+//        "SQLiteData",
+//        .product(name: "ConcurrencyExtras", package: "swift-concurrency-extras"),
+//        .product(name: "CustomDump", package: "swift-custom-dump"),
+//        .product(name: "Dependencies", package: "swift-dependencies"),
+//        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
+//        .product(name: "StructuredQueriesTestSupport", package: "swift-structured-queries"),
+//      ]
+//    ),
+//    .testTarget(
+//      name: "SQLiteDataTests",
+//      dependencies: [
+//        "SQLiteData",
+//        "SQLiteDataTestSupport",
+//        .product(name: "DependenciesTestSupport", package: "swift-dependencies"),
+//        .product(name: "InlineSnapshotTesting", package: "swift-snapshot-testing"),
+//        .product(name: "SnapshotTestingCustomDump", package: "swift-snapshot-testing"),
+//        .product(name: "StructuredQueries", package: "swift-structured-queries"),
+//      ]
+//    ),
   ],
   swiftLanguageModes: [.v6]
 )

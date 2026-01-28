@@ -1,5 +1,5 @@
 import Foundation
-import GRDBSQLite
+import SQLCipher
 
 extension Database {
   /// Adds a user-defined scalar `@DatabaseFunction` to a connection.

@@ -1,5 +1,5 @@
 import Foundation
-import GRDBSQLite
+import SQLCipher
 import StructuredQueriesCore
 
 @usableFromInline
